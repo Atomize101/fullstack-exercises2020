@@ -1,16 +1,11 @@
-import React from 'react';
+//import React from 'react';
 
-const Part = ({ part1, exercises1, part2, exercises2, part3, exercises3 }) => {
+const Part = ({ props }) => {
+	console.log(props);
 	return (
 		<div>
 			<p>
-				{part1} {exercises1}
-			</p>
-			<p>
-				{part2} {exercises2}
-			</p>
-			<p>
-				{part3} {exercises3}
+				{props.content.name} {props.content.exercises}
 			</p>
 		</div>
 	);
