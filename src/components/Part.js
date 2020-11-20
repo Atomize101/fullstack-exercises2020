@@ -1,11 +1,10 @@
 //import React from 'react';
 
-const Part = ({ props }) => {
-	console.log(props);
+const Part = ({ name, exercises }) => {
 	return (
 		<div>
 			<p>
-				{props.content.name} {props.content.exercises}
+				{name} {exercises}
 			</p>
 		</div>
 	);
