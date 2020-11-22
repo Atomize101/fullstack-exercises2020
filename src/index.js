@@ -26,8 +26,18 @@ const App = () => {
 		console.log(allFeedBack);
 	};
 
-	const Total = (props) => {
-		return <div>Total: {allFeedBack.reduce((a, b) => a + b, 0)}</div>;
+	const Statistics = () => {
+		const total = good + neutral + bad;
+		const average = (good - bad) / total;
+		const positive = good / total;
+
+		return (
+			<div>
+				<p>Total: {total}</p>
+				<p>Average: {average}</p>
+				<p>Positive: {average}</p>
+			</div>
+		);
 	};
 
 	return (
@@ -45,7 +55,7 @@ const App = () => {
 				<p>good: {good}</p>
 				<p>neutral: {neutral}</p>
 				<p>bad: {bad}</p>
-				<Total allFeedBack={allFeedBack} />
+				<Statistics good={good} neutral={neutral} bad={bad} />
 			</div>
 		</div>
 	);
