@@ -6,14 +6,33 @@ const App = () => {
 	const [good, setGood] = useState(0);
 	const [neutral, setNeutral] = useState(0);
 	const [bad, setBad] = useState(0);
+	const [allFeedBack, setAllFeedBack] = useState([]);
+
+	const handleGoodClick = () => {
+		setGood(good + 1);
+		setAllFeedBack(allFeedBack.concat(1));
+		console.log(allFeedBack);
+	};
+
+	const handleNeutralClick = () => {
+		setNeutral(neutral + 1);
+		setAllFeedBack(allFeedBack.concat(1));
+		console.log(allFeedBack);
+	};
+
+	const handleBadClick = () => {
+		setBad(bad + 1);
+		setAllFeedBack(allFeedBack.concat(1));
+		console.log(allFeedBack);
+	};
 
 	return (
 		<div>
 			<h1>Give Feedback</h1>
 			<div>
-				<button onClick={() => setGood(good + 1)}>Good</button>
-				<button onClick={() => setNeutral(neutral + 1)}>Neutral</button>
-				<button onClick={() => setBad(bad + 1)}>Bad</button>
+				<button onClick={handleGoodClick}>Good</button>
+				<button onClick={handleNeutralClick}>Neutral</button>
+				<button onClick={handleBadClick}>Bad</button>
 			</div>
 			<div>
 				<h1>Statistics</h1>
