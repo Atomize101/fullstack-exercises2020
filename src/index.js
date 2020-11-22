@@ -1,90 +1,19 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
-	const [good, setGood] = useState(0);
-	const [neutral, setNeutral] = useState(0);
-	const [bad, setBad] = useState(0);
-	// const [allFeedBack, setAllFeedBack] = useState([]);
+const App = (props) => {
+	const [selected, setSelected] = useState(0);
 
-	/*	const handleGoodClick = () => {
-		setGood(good + 1);
-		setAllFeedBack(allFeedBack.concat(1));
-		console.log(allFeedBack);
-	};
-
-	const handleNeutralClick = () => {
-		setNeutral(neutral + 1);
-		setAllFeedBack(allFeedBack.concat(1));
-		console.log(allFeedBack);
-	};
-
-	const handleBadClick = () => {
-		setBad(bad + 1);
-		setAllFeedBack(allFeedBack.concat(1));
-		console.log(allFeedBack);
-	};
-*/
-	const Statistics = () => {
-		const total = good + neutral + bad;
-		const average = (good - bad) / total;
-		const positive = good / total;
-
-		if (isNaN(average && positive)) {
-			return 'No data to show yet';
-		}
-
-		return (
-			<div>
-				<Statistic text="good" value={good} />
-				<Statistic text="neutral" value={neutral} />
-				<Statistic text="bad" value={bad} />
-				<Statistic text="Total: " value={total} />
-				<Statistic text="Average: " value={average} />
-				<Statistic text="Positive: " value={positive} />
-			</div>
-		);
-	};
-
-	const Statistic = ({ text, value }) => {
-		return (
-			<div>
-				<table>
-					<tbody>
-						<tr>
-							<td>{text}</td>
-							<td>{value}</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		);
-	};
-
-	const Button = ({ onClick, text }) => {
-		return (
-			<div>
-				<button onClick={onClick}>{text}</button>
-			</div>
-		);
-	};
-
-	return (
-		<div>
-			<h1>Give Feedback</h1>
-			<div>
-				<Button text="good" onClick={() => setGood(good + 1)} />
-				<Button text="neutral" onClick={() => setNeutral(neutral + 1)} />
-				<Button text="bad" onClick={() => setBad(bad + 1)} />
-			</div>
-			<div>
-				<h1>Statistics</h1>
-			</div>
-			<div>
-				<Statistics good={good} neutral={neutral} bad={bad} />
-			</div>
-		</div>
-	);
+	return <div>{props.anecdotes[selected]}</div>;
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const anecdotes = [
+	'If it hurts, do it more often',
+	'Adding manpower to a late software project makes it later!',
+	'The first 90 percent of the code accounts for the first 90 percent of the development time...The remaining 10 percent of the code accounts for the other 90 percent of the development time.',
+	'Any fool can write code that a computer can understand. Good programmers write code that humans can understand.',
+	'Premature optimization is the root of all evil.',
+	'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
+];
+
+ReactDOM.render(<App anecdotes={anecdotes} />, document.getElementById('root'));
