@@ -39,9 +39,9 @@ const App = () => {
 				<Statistic text="good" value={good} />
 				<Statistic text="neutral" value={neutral} />
 				<Statistic text="bad" value={bad} />
-				<p>Total: {total}</p>
-				<p>Average: {average}</p>
-				<p>Positive: {positive}</p>
+				<Statistic text="Total: " value={total} />
+				<Statistic text="Average: " value={average} />
+				<Statistic text="Positive: " value={positive} />
 			</div>
 		);
 	};
@@ -49,9 +49,14 @@ const App = () => {
 	const Statistic = ({ text, value }) => {
 		return (
 			<div>
-				<p>
-					{text} {value}
-				</p>
+				<table>
+					<tbody>
+						<tr>
+							<td>{text}</td>
+							<td>{value}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		);
 	};
