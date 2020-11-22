@@ -31,11 +31,15 @@ const App = () => {
 		const average = (good - bad) / total;
 		const positive = good / total;
 
+		if (isNaN(average && positive)) {
+			return 'No data to show yet';
+		}
+
 		return (
 			<div>
 				<p>Total: {total}</p>
 				<p>Average: {average}</p>
-				<p>Positive: {average}</p>
+				<p>Positive: {positive}</p>
 			</div>
 		);
 	};
