@@ -26,6 +26,10 @@ const App = () => {
 		console.log(allFeedBack);
 	};
 
+	const Total = (props) => {
+		return <div>Total: {allFeedBack.reduce((a, b) => a + b, 0)}</div>;
+	};
+
 	return (
 		<div>
 			<h1>Give Feedback</h1>
@@ -41,6 +45,7 @@ const App = () => {
 				<p>good: {good}</p>
 				<p>neutral: {neutral}</p>
 				<p>bad: {bad}</p>
+				<Total allFeedBack={allFeedBack} />
 			</div>
 		</div>
 	);
