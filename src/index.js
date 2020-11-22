@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const App = () => {
-	// save clicks of each button to its own state
 	const [good, setGood] = useState(0);
 	const [neutral, setNeutral] = useState(0);
 	const [bad, setBad] = useState(0);
-	const [allFeedBack, setAllFeedBack] = useState([]);
+	// const [allFeedBack, setAllFeedBack] = useState([]);
 
-	const handleGoodClick = () => {
+	/*	const handleGoodClick = () => {
 		setGood(good + 1);
 		setAllFeedBack(allFeedBack.concat(1));
 		console.log(allFeedBack);
@@ -25,7 +24,7 @@ const App = () => {
 		setAllFeedBack(allFeedBack.concat(1));
 		console.log(allFeedBack);
 	};
-
+*/
 	const Statistics = () => {
 		const total = good + neutral + bad;
 		const average = (good - bad) / total;
@@ -57,13 +56,21 @@ const App = () => {
 		);
 	};
 
+	const Button = ({ onClick, text }) => {
+		return (
+			<div>
+				<button onClick={onClick}>{text}</button>
+			</div>
+		);
+	};
+
 	return (
 		<div>
 			<h1>Give Feedback</h1>
 			<div>
-				<button onClick={handleGoodClick}>Good</button>
-				<button onClick={handleNeutralClick}>Neutral</button>
-				<button onClick={handleBadClick}>Bad</button>
+				<Button text="good" onClick={() => setGood(good + 1)} />
+				<Button text="neutral" onClick={() => setNeutral(neutral + 1)} />
+				<Button text="bad" onClick={() => setBad(bad + 1)} />
 			</div>
 			<div>
 				<h1>Statistics</h1>
