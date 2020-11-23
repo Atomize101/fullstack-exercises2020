@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Part from './components/Part';
 import Total from './components/Total';
 import Content from './components/Content';
+import Course from './components/Course';
 
 const App = () => {
 	const course = {
