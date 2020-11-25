@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Filter from './Filter';
+import Persons from './Persons';
 
 const App = () => {
 	const [persons, setPersons] = useState([
@@ -59,7 +60,7 @@ const App = () => {
 				</div>
 			</form>
 			<h2>Numbers</h2>
-			<h3>{allPeople()}</h3>
+			<Persons search={search} persons={persons} />
 		</div>
 	);
 };
