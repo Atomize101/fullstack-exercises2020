@@ -38,16 +38,16 @@ const App = () => {
 		<div>
 			<h2>Phonebook</h2>
 			<div>
-				<Filter
-					onSearchChange={handleSearchChange}
-					onNameChange={handleNameChange}
-					name={newName}
-					onNumberChange={handleNumberChange}
-					number={newNumber}
-				/>
+				<Filter onSearchChange={handleSearchChange} search={search} />
 			</div>
 			<br />
-			<PersonForm onSubmit={addPerson} />
+			<PersonForm
+				onSubmit={addPerson}
+				onNameChange={handleNameChange}
+				name={newName}
+				onNumberChange={handleNumberChange}
+				number={newNumber}
+			/>
 			<h2>Numbers</h2>
 			<Persons search={search} persons={persons} />
 		</div>
