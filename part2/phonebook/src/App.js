@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 const App = () => {
 	const [persons, setPersons] = useState([{ name: 'Arto Hellas' }, { name: 'Chris Patrick' }]);
 	const [newName, setNewName] = useState('');
+	const [showAll, setShowAll] = useState(true);
 
 	const addPerson = (event) => {
 		event.preventDefault();
@@ -16,8 +17,14 @@ const App = () => {
 		setNewName(event.target.value);
 	};
 
-	const numbers = () => persons.map((p, i) => <p key={i}>{p.name}</p>);
+	const numbers = () => persons.map((person, i) => <p key={i}>{person.name}</p>);
 
+	const personExists = !!persons.find((p) => p.name.toLowerCase() === newName.toLowerCase());
+
+	if (personExists) {
+		alert(`${newName} is already added to the phone book`);
+		return;
+	}
 	return (
 		<div>
 			<h2>Phonebook</h2>
