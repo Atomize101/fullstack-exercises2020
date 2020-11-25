@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Filter from './Filter';
 
 const App = () => {
 	const [persons, setPersons] = useState([
@@ -8,24 +9,28 @@ const App = () => {
 		{ name: 'Mary Poppendieck', number: '39-23-6423122' },
 	]);
 	const [newName, setNewName] = useState('');
-	//const [numbers, setNumbers] = useState([{ number: '' }]);
 	const [newNumber, setNewNumber] = useState('');
+	const [search, setSearch] = useState('');
+	const [searchResults, setSearchResults] = useState('');
 
 	const addPerson = (event) => {
 		event.preventDefault();
-		console.log('button clicked', event.target);
 		setPersons(persons.concat({ name: newName, number: newNumber }));
 		setNewName('');
+		setNewNumber('');
 	};
 
 	const handleNameChange = (event) => {
-		console.log(event.target.vale);
 		setNewName(event.target.value);
 	};
 
 	const handleNumberChange = (event) => {
-		console.log(event.target.vale);
 		setNewNumber(event.target.value);
+	};
+
+	const handleSearchChange = (event) => {
+		const searchTerm = event.target.value;
+		setSearch(searchTerm);
 	};
 
 	const allPeople = () =>
@@ -35,17 +40,11 @@ const App = () => {
 			</p>
 		));
 
-	const personExists = !!persons.find((p) => p.name.toLowerCase() === newName.toLowerCase());
-
-	if (personExists) {
-		alert(`${newName} is already added to the phone book`);
-		return;
-	}
 	return (
 		<div>
 			<h2>Phonebook</h2>
 			<div>
-				Filter show with: <input />
+				<Filter onSearchChange={handleSearchChange} search={search} />
 			</div>
 			<br />
 			<form onSubmit={addPerson}>
